@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-node_modules
 build
 typings
 =======
@@ -36,4 +34,3 @@ node_modules
 
 # Optional REPL history
 .node_repl_history
->>>>>>> f86878e6fcb4faefe0d4622195f6ccf9379559c1
