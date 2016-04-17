@@ -5,11 +5,11 @@ import SearchQuery from './SearchQuery';
 
 export default class App extends React.Component {
     constructor(props) {
-        super(props)
+        super(props);
         
         this.state = {
             searchQuery: {}
-        }
+        };
     }
     
     setSearchParams (searchQuery) {
@@ -23,7 +23,7 @@ export default class App extends React.Component {
             <div>
                 <Navigation />
                 <div className="container">
-                    <SearchQuery onSearch={(searchQuery) => this.setSearchParams(searchQuery)}/>
+                    <SearchQuery onSearch={(searchQuery) => this.setSearchParams(searchQuery)} />
                     <TableContainer query={this.state.searchQuery}/>
                 </div>
             </div>

@@ -7,7 +7,7 @@ export default class TableContainer extends React.Component {
 
         this.state = {
             jokes: []
-        }
+        };
     }
 
     doSearch(firstName = 'Chuck', lastName = 'Norris') {
@@ -16,16 +16,12 @@ export default class TableContainer extends React.Component {
             .then(res => {
                 this.setState({
                     jokes: res.value
-                })
-            })
+                });
+            });
     }
 
     componentDidMount() {
         this.doSearch();
-    }
-    
-    componentDidUpdate() {
-        //this.doSearch(this.props.query.firstName, this.props.query.lastName);
     }
     
     componentWillReceiveProps(props){

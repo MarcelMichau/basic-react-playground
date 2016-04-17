@@ -9,7 +9,7 @@ export default class SearchQuery extends React.Component {
         this.state = {
             firstName: '',
             lastName: ''
-        }
+        };
     }
 
     handleChange (e) {
@@ -50,7 +50,7 @@ export default class SearchQuery extends React.Component {
                     labelClassName="label-class"
                     onChange={(e) => this.handleChange(e)} />
                     
-                    <ButtonInput type="submit" value="Submit Button" />
+                    <ButtonInput bsStyle="primary" type="submit" value="Submit Button" />
             </form>
         );
     }
