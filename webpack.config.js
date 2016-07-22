@@ -10,6 +10,7 @@ const PATHS = {
 
 module.exports = {
     entry: [
+        'babel-polyfill', 
         PATHS.app,
         'webpack/hot/dev-server',
         'webpack-dev-server/client?http://localhost:8080/'

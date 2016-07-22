@@ -1,6 +1,9 @@
 import React from 'react';
-import Input from 'react-bootstrap/lib/Input';
-import ButtonInput from 'react-bootstrap/lib/ButtonInput';
+import Form from 'react-bootstrap/lib/Form';
+import FormGroup from 'react-bootstrap/lib/FormGroup';
+import FormControl from 'react-bootstrap/lib/FormControl';
+import ControlLabel from 'react-bootstrap/lib/ControlLabel';
+import Button from 'react-bootstrap/lib/Button';
 
 export default class SearchQuery extends React.Component {
     constructor(props) {
@@ -12,13 +15,17 @@ export default class SearchQuery extends React.Component {
         };
     }
 
-    handleChange (e) {
-        e.preventDefault();
+    handleFirstNameChange (e) {
         this.setState({
-            firstName: this.refs.firstName.getValue(),
-            lastName: this.refs.lastName.getValue()
+            firstName: e.target.value
         });
     }
+
+    handleLastNameChange (e) {
+        this.setState({
+            lastName: e.target.value
+        });
+    } 
     
     onSubmit (e) {
         e.preventDefault();
@@ -27,31 +34,26 @@ export default class SearchQuery extends React.Component {
 
     render() {
         return (
-            <form className="form-inline" onSubmit={(e) => this.onSubmit(e)}>
-                <Input
-                    type="text"
-                    value={this.state.firstName}
-                    placeholder="First Name"
-                    label="Specify First Name"
-                    hasFeedback
-                    ref="firstName"
-                    groupClassName="group-class"
-                    labelClassName="label-class"
-                    onChange={(e) => this.handleChange(e)} />
-                    
-                <Input
-                    type="text"
-                    value={this.state.lastName}
-                    placeholder="Last Name"
-                    label="Specify Last Name"
-                    hasFeedback
-                    ref="lastName"
-                    groupClassName="group-class"
-                    labelClassName="label-class"
-                    onChange={(e) => this.handleChange(e)} />
-                    
-                    <ButtonInput bsStyle="primary" type="submit" value="Submit Button" />
-            </form>
+            <Form inline onSubmit={(e) => this.onSubmit(e)}>
+                <FormGroup
+                    controlId="searchForm">
+                    <ControlLabel>First Name</ControlLabel>
+                    <FormControl 
+                        type="text"
+                        value={this.state.firstName}
+                        placeholder="First Name"
+                        onChange={this.handleFirstNameChange.bind(this)}
+                    />
+                    <ControlLabel>Last Name</ControlLabel>
+                    <FormControl 
+                        type="text"
+                        value={this.state.lastName}
+                        placeholder="Last Name"
+                        onChange={this.handleLastNameChange.bind(this)}
+                    />
+                    <Button bsStyle="primary" type="submit">Search</Button>
+                </FormGroup>
+            </Form>
         );
     }
 }

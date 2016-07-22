@@ -10,21 +10,20 @@ export default class TableContainer extends React.Component {
         };
     }
 
-    doSearch(firstName = 'Chuck', lastName = 'Norris') {
-        fetch(`http://api.icndb.com/jokes/random/10?firstName=${firstName}&lastName=${lastName}`)
-            .then(response => response.json())
-            .then(res => {
-                this.setState({
-                    jokes: res.value
-                });
-            });
+    async doSearch(firstName = 'Chuck', lastName = 'Norris') {
+        const response = await fetch(`http://api.icndb.com/jokes/random/10?firstName=${firstName}&lastName=${lastName}`);
+        const data = await response.json();
+
+        this.setState({
+            jokes: data.value
+        });
     }
 
     componentDidMount() {
         this.doSearch();
     }
-    
-    componentWillReceiveProps(props){
+
+    componentWillReceiveProps(props) {
         this.doSearch(props.query.firstName, props.query.lastName);
     }
 
